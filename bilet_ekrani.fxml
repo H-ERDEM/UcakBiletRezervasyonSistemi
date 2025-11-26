@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="BiletEkraniController">
+
+    <!-- Üst Menü -->
+    <top>
+        <HBox spacing="10">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Button text="Dosyadan Yükle" fx:id="btnLoad"/>
+            <Button text="Dosyaya Kaydet" fx:id="btnSave"/>
+            <Button text="Bilet Sil" fx:id="btnDelete"/>
+            <Button text="Bilet Güncelle" fx:id="btnUpdate"/>
+            <Button text="Bilet Sorgula" fx:id="btnSearch"/>
+            <Button text="Sırala" fx:id="btnSort"/>
+            <Button text="İşlem Geçmişi" fx:id="btnHistory"/>
+        </HBox>
+    </top>
+
+    <!-- Sol Form Alanı -->
+    <left>
+        <VBox spacing="10">
+            <padding>
+                <Insets top="15" right="15" bottom="15" left="15"/>
+            </padding>
+            <Label text="Bilet Ekle"/>
+
+            <TextField fx:id="txtAd" promptText="Yolcu Adı"/>
+            <TextField fx:id="txtSoyad" promptText="Yolcu Soyadı"/>
+            <TextField fx:id="txtTc" promptText="TC No"/>
+            <TextField fx:id="txtKoltuk" promptText="Koltuk No"/>
+
+            <TextField fx:id="txtTarih" promptText="Tarih (dd.MM.yyyy)"/>
+            <TextField fx:id="txtSaat" promptText="Saat (HH:mm)"/>
+            <TextField fx:id="txtFiyat" promptText="Fiyat"/>
+
+            <Button text="Bilet Ekle" fx:id="btnAdd" maxWidth="Infinity"/>
+        </VBox>
+    </left>
+
+    <!-- Sağda Tablo -->
+    <center>
+        <TableView fx:id="tblBiletler">
+            <columns>
+                <TableColumn fx:id="colAd" text="Ad" prefWidth="120"/>
+                <TableColumn fx:id="colSoyad" text="Soyad" prefWidth="120"/>
+                <TableColumn fx:id="colTc" text="TC" prefWidth="140"/>
+                <TableColumn fx:id="colKoltuk" text="Koltuk" prefWidth="80"/>
+                <TableColumn fx:id="colTarih" text="Tarih" prefWidth="120"/>
+                <TableColumn fx:id="colSaat" text="Saat" prefWidth="80"/>
+                <TableColumn fx:id="colFiyat" text="Fiyat" prefWidth="80"/>
+            </columns>
+        </TableView>
+    </center>
+
+</BorderPane>
