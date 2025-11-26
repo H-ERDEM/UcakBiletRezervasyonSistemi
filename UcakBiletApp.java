@@ -1,5 +1,6 @@
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -7,16 +8,19 @@ public class UcakBiletApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("bilet_ekrani.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 900, 600);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("bilet_ekrani.fxml"));
+        Parent root = loader.load();
 
-        stage.setTitle("Uçak Bileti Rezervasyon Sistemi");
+        Scene scene = new Scene(root, 1000, 650);
+        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+
+        stage.setTitle("Uçak Bilet Rezervasyon Sistemi");
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
     }
 
     public static void main(String[] args) {
-        launch();
+        launch(args);
     }
 }
-
