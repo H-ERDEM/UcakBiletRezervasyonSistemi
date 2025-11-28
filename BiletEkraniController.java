@@ -29,8 +29,7 @@ public class BiletEkraniController {
     @FXML private Label lblMesaj;
 
     // Ekle formu
-    @FXML private TextField txtAdEkle, txtSoyadEkle, txtTcEkle,
-            txtUcusNoEkle, txtKoltukEkle, txtTarihEkle, txtSaatEkle, txtFiyatEkle;
+    @FXML private TextField txtAdEkle, txtSoyadEkle, txtTcEkle, txtUcusNoEkle, txtKoltukEkle, txtTarihEkle, txtSaatEkle, txtFiyatEkle;
 
     // Sıralama
     @FXML private ChoiceBox<String> cbSiralaKriter;
@@ -70,7 +69,6 @@ public class BiletEkraniController {
         colTarih.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().tarih));
         colSaat.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().saat));
         colFiyat.setCellValueFactory(c -> new SimpleStringProperty(String.valueOf(c.getValue().fiyat)));
-
         tblBiletler.setItems(biletListesi);
 
         // Sıralama kriterleri
@@ -85,8 +83,7 @@ public class BiletEkraniController {
         clearMessage();
     }
 
-    // -------------------- GENEL YARDIMCILAR -------------------- //
-
+    // -------------------- GENEL YARDIMCILAR --------------------
     private void showPane(Pane pane) {
         for (Node n : rootStack.getChildren()) {
             n.setVisible(false);
@@ -120,34 +117,21 @@ public class BiletEkraniController {
 
     private boolean koltukDoluMu(String ucusNo, String koltuk) {
         for (Bilet b : biletListesi) {
-            if (b.ucusNo.equals(ucusNo) && b.yolcu.koltukNo.equalsIgnoreCase(koltuk)) {
-                return true;
-            }
+            if (b.ucusNo.equals(ucusNo) && b.yolcu.koltukNo.equalsIgnoreCase(koltuk)) return true;
         }
         return false;
     }
 
-    // -------------------- EKRAN GEÇİŞLERİ -------------------- //
-
+    // -------------------- EKRAN GEÇİŞLERİ --------------------
     @FXML private void goMenu() { showPane(menuPane); }
     @FXML private void goEkle() { guncellenenBilet = null; temizleEkleFormu(); showPane(eklePane); }
-    @FXML private void goSirala() { showPane(siralaPane); }
+    @FXML private void goSirala() { showPane(listePane); }
     @FXML private void goSorgula() { taSorguSonuc.clear(); txtSorguDeger.clear(); rbSorguTc.setSelected(true); showPane(sorgulaPane); }
     @FXML private void goListe() { tblBiletler.refresh(); showPane(listePane); }
-    @FXML private void goGecmis() {
-        StringBuilder sb = new StringBuilder();
-        for (String s : islemGecmisi) sb.append(s).append("\n");
-        taGecmis.setText(sb.toString());
-        showPane(gecmisPane);
-    }
-    @FXML private void handleCikis() {
-        txtLoginKullanici.clear();
-        txtLoginSifre.clear();
-        lblLoginHata.setText("");
-        showPane(loginPane);
-    }
+    @FXML private void goGecmis() { StringBuilder sb = new StringBuilder(); for (String s : islemGecmisi) sb.append(s).append("\n"); taGecmis.setText(sb.toString()); showPane(gecmisPane); }
+    @FXML private void handleCikis() { txtLoginKullanici.clear(); txtLoginSifre.clear(); lblLoginHata.setText(""); showPane(loginPane); }
 
-    // -------------------- LOGIN -------------------- //
+    // -------------------- LOGIN --------------------
     @FXML private void handleLogin() {
         String k = txtLoginKullanici.getText().trim();
         String s = txtLoginSifre.getText().trim();
@@ -156,11 +140,12 @@ public class BiletEkraniController {
             showPane(menuPane);
             showInfo("Hoş geldin, " + k + "!");
         } else {
+            lblLoginHata.getStyleClass().setAll("message-text", "error-message");
             lblLoginHata.setText("Kullanıcı adı veya şifre hatalı!");
         }
     }
 
-    // -------------------- BİLET EKLE / GÜNCELLE -------------------- //
+    // -------------------- BİLET EKLE / GÜNCELLE --------------------
     @FXML
     private void handleBiletEkle() {
         try {
@@ -168,24 +153,85 @@ public class BiletEkraniController {
             String soyad = txtSoyadEkle.getText().trim();
             String tc = txtTcEkle.getText().trim();
             String ucusNo = txtUcusNoEkle.getText().trim();
-            String koltuk = txtKoltukEkle.getText().trim();
+            String koltuk = txtKoltukEkle.getText().trim().toUpperCase();
             String tarih = txtTarihEkle.getText().trim();
             String saat = txtSaatEkle.getText().trim();
             String fiyatStr = txtFiyatEkle.getText().trim();
 
-            // Kontroller (Main fonksiyonlarını kullanabilirsiniz)
-            if (!Main.isimKontrol(ad)) { showError("Hatalı ad!"); return; }
-            if (!Main.isimKontrol(soyad)) { showError("Hatalı soyad!"); return; }
-            if (!Main.tcKontrol(tc)) { showError("Hatalı TC!"); return; }
-            if (!Main.ucusNoKontrol(ucusNo)) { showError("Hatalı uçuş numarası!"); return; }
-            if (!Main.koltukKontrol(koltuk)) { showError("Hatalı koltuk!"); return; }
-            if (koltukDoluMu(ucusNo, koltuk) && guncellenenBilet == null) { showError("Bu koltuk dolu!"); return; }
-            if (!Main.tarihKontrol(tarih)) { showError("Hatalı tarih!"); return; }
-            if (!Main.saatKontrol(saat)) { showError("Hatalı saat!"); return; }
+            // 1. Boş alan kontrolü
+            if (ad.isEmpty() || soyad.isEmpty() || tc.isEmpty() || ucusNo.isEmpty() || koltuk.isEmpty() || tarih.isEmpty() || saat.isEmpty() || fiyatStr.isEmpty()) {
+                showError("Tüm alanlar dolu olmalıdır!");
+                return;
+            }
 
-            double fiyat = Double.parseDouble(fiyatStr);
-            if (fiyat < 0) { showError("Negatif fiyat olamaz!"); return; }
+            // 2. Ad / Soyad kontrolü
+            if (!ad.matches("[a-zA-ZğüşöçıİĞÜŞÖÇ ]+") || !soyad.matches("[a-zA-ZğüşöçıİĞÜŞÖÇ ]+")) {
+                showError("Ad ve Soyad sadece harf ve boşluk içerebilir!");
+                return;
+            }
 
+            // 3. TC kontrolü
+            if (!tc.matches("\\d{11}")) {
+                showError("TC kimlik 11 haneli rakamlardan oluşmalıdır!");
+                return;
+            }
+
+            // 4. Uçuş numarası kontrolü
+            if (!ucusNo.matches("\\d+")) {
+                showError("Uçuş numarası sadece rakamlardan oluşmalıdır!");
+                return;
+            }
+
+            // 5. Koltuk kontrolü (1-2 rakam + A-D harfi)
+            if (!koltuk.matches("\\d{1,2}[A-D]")) {
+                showError("Koltuk numarası 1-2 rakam ve A-D harfi olmalıdır!");
+                return;
+            }
+
+            // 6. Tarih kontrolü
+            DateTimeFormatter tarihFormat = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+            LocalDate biletTarihi;
+            try {
+                biletTarihi = LocalDate.parse(tarih, tarihFormat);
+                if (biletTarihi.isBefore(LocalDate.now())) {
+                    showError("Tarih bugünden önce olamaz!");
+                    return;
+                }
+            } catch (Exception e) {
+                showError("Tarih dd.MM.yyyy formatında olmalıdır!");
+                return;
+            }
+
+            // 7. Saat kontrolü
+            if (!saat.matches("([01]?\\d|2[0-3])\\.[0-5]\\d")) {
+                showError("Saat HH.mm formatında olmalıdır!");
+                return;
+            }
+
+            // 8. Fiyat kontrolü
+            double fiyat;
+            try {
+                fiyat = Double.parseDouble(fiyatStr);
+                if (fiyat < 0) { showError("Fiyat negatif olamaz!"); return; }
+            } catch (NumberFormatException e) {
+                showError("Fiyat sayısal olmalıdır!");
+                return;
+            }
+
+            // 9. Koltuk doluluk kontrolü
+            if (guncellenenBilet == null) { // ekleme
+                if (koltukDoluMu(ucusNo, koltuk)) {
+                    showError("Bu uçuşta koltuk dolu!");
+                    return;
+                }
+            } else { // güncelleme
+                if (!guncellenenBilet.yolcu.koltukNo.equalsIgnoreCase(koltuk) && koltukDoluMu(ucusNo, koltuk)) {
+                    showError("Bu uçuşta koltuk dolu!");
+                    return;
+                }
+            }
+
+            // -------------------- EKLE / GÜNCELLE --------------------
             if (guncellenenBilet == null) {
                 Yolcu y = new Yolcu(ad, soyad, tc, koltuk);
                 Bilet b = new Bilet(ucusNo, tarih, saat, fiyat, y);
@@ -211,7 +257,7 @@ public class BiletEkraniController {
             }
 
             temizleEkleFormu();
-            kaydetBiletler(); // değişiklik sonrası kaydet
+            kaydetBiletler();
 
         } catch (Exception ex) {
             showError("Bilet eklenemedi/güncellenemedi: " + ex.getMessage());
@@ -224,23 +270,19 @@ public class BiletEkraniController {
         txtSaatEkle.clear(); txtFiyatEkle.clear();
     }
 
-    @FXML
-    private void handleListeSil() {
+    @FXML private void handleListeSil() {
         Bilet secili = tblBiletler.getSelectionModel().getSelectedItem();
         if (secili == null) { showError("Lütfen bilet seçin."); return; }
-
         biletListesi.remove(secili);
         biletAgaci.sil(secili.yolcu.tcNo);
         islemGecmisi.add("Bilet silindi -> " + secili);
         showInfo("Bilet silindi.");
-        kaydetBiletler(); // değişiklik sonrası kaydet
+        kaydetBiletler();
     }
 
-    @FXML
-    private void handleListeGuncelle() {
+    @FXML private void handleListeGuncelle() {
         Bilet secili = tblBiletler.getSelectionModel().getSelectedItem();
         if (secili == null) { showError("Önce bilet seçin."); return; }
-
         guncellenenBilet = secili;
         txtAdEkle.setText(secili.yolcu.ad);
         txtSoyadEkle.setText(secili.yolcu.soyad);
@@ -250,62 +292,62 @@ public class BiletEkraniController {
         txtTarihEkle.setText(secili.tarih);
         txtSaatEkle.setText(secili.saat);
         txtFiyatEkle.setText(String.valueOf(secili.fiyat));
-
         showPane(eklePane);
         showInfo("Seçili bilet düzenleme için yüklendi.");
     }
 
-    // -------------------- SIRALAMA -------------------- //
-    @FXML
-    private void handleSirala() {
-        String kriter = cbSiralaKriter.getSelectionModel().getSelectedItem();
-        if (kriter == null) { showError("Önce kriter seçin."); return; }
+    // -------------------- SIRALAMA --------------------
+    @FXML private void handleSirala() {
+        String kriter = cbSiralaKriter.getValue();
+        if (kriter == null) { showError("Lütfen kriter seçin!"); return; }
 
         switch (kriter) {
             case "Tarihe göre" -> {
                 DateTimeFormatter f = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-                biletListesi.sort(Comparator.comparing(b -> LocalDate.parse(b.tarih, f)));
+                FXCollections.sort(biletListesi, Comparator.comparing(b -> LocalDate.parse(b.tarih, f)));
             }
-            case "Saate göre" -> { biletListesi.sort(Comparator.comparing(b -> b.saat)); }
-            case "Fiyata göre" -> { biletListesi.sort(Comparator.comparingDouble(b -> b.fiyat)); }
+            case "Saate göre" -> FXCollections.sort(biletListesi, Comparator.comparing(b -> b.saat));
+            case "Fiyata göre" -> FXCollections.sort(biletListesi, Comparator.comparingDouble(b -> b.fiyat));
         }
 
-        islemGecmisi.add("Biletler \"" + kriter + "\" sırasına göre sıralandı.");
-        showInfo("Biletler " + kriter + " sırasına göre sıralandı.");
         tblBiletler.refresh();
+        showInfo("Biletler " + kriter + " sırasına göre sıralandı.");
+        islemGecmisi.add("Biletler \"" + kriter + "\" sırasına göre sıralandı.");
     }
 
-    // -------------------- SORGULAMA -------------------- //
-    @FXML
-    private void handleSorgula() {
+    // -------------------- SORGULAMA --------------------
+    @FXML private void handleSorgula() {
         String deger = txtSorguDeger.getText().trim();
         if (deger.isEmpty()) { showError("Arama değeri boş olamaz."); return; }
 
         StringBuilder sb = new StringBuilder();
+
         if (rbSorguTc.isSelected()) {
             Bilet b = biletAgaci.ara(deger);
             if (b != null) sb.append(b.toString());
             else sb.append("Bu TC'ye ait bilet bulunamadı.");
             islemGecmisi.add("Bilet sorgulama (TC) -> " + deger);
-        } else {
+        } else if (rbSorguUcusNo.isSelected()) {
             boolean bulundu = false;
             for (Bilet b : biletListesi) {
-                if (b.ucusNo.equals(deger)) { sb.append(b.toString()).append("\n"); bulundu = true; }
+                if (b.ucusNo.equals(deger)) {
+                    sb.append(b.toString()).append("\n");
+                    bulundu = true;
+                }
             }
             if (!bulundu) sb.append("Bu uçuş numarasına ait bilet bulunamadı.");
             islemGecmisi.add("Bilet sorgulama (Uçuş no) -> " + deger);
         }
+
         taSorguSonuc.setText(sb.toString());
         showInfo("Sorgulama tamamlandı.");
     }
 
-    // -------------------- DOSYA İŞLEMLERİ -------------------- //
+    // -------------------- DOSYA İŞLEMLERİ --------------------
     private void kaydetBiletler() {
         try (PrintWriter pw = new PrintWriter(DOSYA_ADI)) {
             for (Bilet b : biletListesi) {
-                pw.println(b.yolcu.ad + ";" + b.yolcu.soyad + ";" + b.yolcu.tcNo + ";" +
-                        b.yolcu.koltukNo + ";" + b.ucusNo + ";" + b.tarih + ";" +
-                        b.saat + ";" + b.fiyat);
+                pw.println(b.yolcu.ad + ";" + b.yolcu.soyad + ";" + b.yolcu.tcNo + ";" + b.yolcu.koltukNo + ";" + b.ucusNo + ";" + b.tarih + ";" + b.saat + ";" + b.fiyat);
             }
         } catch (Exception e) { showError("Kaydetme hatası: " + e.getMessage()); }
     }
@@ -313,7 +355,6 @@ public class BiletEkraniController {
     private void yukleBiletler() {
         File f = new File(DOSYA_ADI);
         if (!f.exists()) return;
-
         try (Scanner sc = new Scanner(f)) {
             while (sc.hasNextLine()) {
                 String[] parts = sc.nextLine().split(";");
@@ -323,8 +364,6 @@ public class BiletEkraniController {
                 biletListesi.add(b);
                 biletAgaci.ekle(b);
             }
-        } catch (Exception e) {
-            showError("Bilet yükleme hatası: " + e.getMessage());
-        }
+        } catch (Exception e) { showError("Bilet yükleme hatası: " + e.getMessage()); }
     }
 }
