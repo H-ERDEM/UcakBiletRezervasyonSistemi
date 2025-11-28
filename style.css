@@ -8,20 +8,18 @@
     -fx-background-color: #1e3a8a;
     -fx-alignment: CENTER_LEFT;
 }
-
 .app-title {
     -fx-text-fill: white;
     -fx-font-size: 20px;
     -fx-font-weight: bold;
 }
 
-/* Kartlar (ekranlar) */
+/* Kartlar */
 .card {
     -fx-background-color: white;
     -fx-background-radius: 12;
     -fx-effect: dropshadow(gaussian, rgba(15,23,42,0.18), 15, 0.2, 0, 4);
 }
-
 .card-title {
     -fx-font-size: 18px;
     -fx-font-weight: bold;
@@ -33,59 +31,27 @@
     -fx-background-radius: 8;
     -fx-padding: 8 16 8 16;
 }
-
 .primary-btn {
     -fx-background-color: #2563eb;
     -fx-text-fill: white;
     -fx-font-weight: bold;
 }
-
 .primary-btn:hover {
     -fx-background-color: #1d4ed8;
 }
-
 .secondary-btn {
     -fx-background-color: #e5e7eb;
     -fx-text-fill: #111827;
 }
-
 .secondary-btn:hover {
     -fx-background-color: #d1d5db;
 }
 
 /* Mesaj kutusu */
-.message-box {
-    -fx-background-color: #f9fafb;
-    -fx-border-color: #e5e7eb;
-    -fx-border-radius: 12;
-    -fx-background-radius: 12;
-    -fx-pref-width: 260;
-}
-
-.message-title {
-    -fx-font-size: 16px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #111827;
-}
-
-.message-text {
-    -fx-font-size: 13px;
-    -fx-text-fill: #374151;
-}
-
-.error-message {
-    -fx-text-fill: #b91c1c;
-}
-
-.info-message {
-    -fx-text-fill: #065f46;
-}
-
-/* Login hata metni */
-.error-text {
-    -fx-text-fill: #b91c1c;
-    -fx-font-size: 12px;
-}
+.message-text { -fx-font-size: 13px; -fx-text-fill: #374151; }
+.error-message { -fx-text-fill: #b91c1c; }
+.info-message { -fx-text-fill: #065f46; }
+.error-text { -fx-text-fill: #b91c1c; -fx-font-size: 12px; }
 
 /* TextField ve TextArea */
 .text-field, .password-field, .text-area {
@@ -93,7 +59,6 @@
     -fx-border-radius: 8;
     -fx-border-color: #e5e7eb;
 }
-
 .text-field:focused, .password-field:focused, .text-area:focused {
     -fx-border-color: #2563eb;
     -fx-effect: dropshadow(gaussian, rgba(37,99,235,0.3), 8, 0.2, 0, 0);
@@ -105,7 +70,4 @@
     -fx-border-radius: 8;
     -fx-background-radius: 8;
 }
-
-.table-view .column-header-background {
-    -fx-background-color: #e5e7eb;
-}
+.table-view .column-header-background { -fx-background-color: #e5e7eb; }
