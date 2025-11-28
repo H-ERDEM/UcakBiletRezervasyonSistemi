@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -25,11 +24,9 @@
     <center>
         <StackPane fx:id="rootStack" BorderPane.alignment="CENTER">
 
-            <!-- LOGIN EKRANI -->
+            <!-- LOGIN -->
             <VBox fx:id="loginPane" alignment="CENTER" spacing="15" styleClass="card">
-                <padding>
-                    <Insets top="30" right="50" bottom="30" left="50"/>
-                </padding>
+                <padding><Insets top="30" right="50" bottom="30" left="50"/></padding>
                 <Label text="Giriş Yap" styleClass="card-title"/>
                 <TextField fx:id="txtLoginKullanici" promptText="Kullanıcı adı"/>
                 <PasswordField fx:id="txtLoginSifre" promptText="Şifre"/>
@@ -38,27 +35,19 @@
             </VBox>
 
             <!-- ANA MENÜ -->
-            <VBox fx:id="menuPane" visible="false" managed="false"
-                  alignment="CENTER" spacing="15" styleClass="card">
-                <padding>
-                    <Insets top="30" right="50" bottom="30" left="50"/>
-                </padding>
+            <VBox fx:id="menuPane" visible="false" managed="false" alignment="CENTER" spacing="15" styleClass="card">
+                <padding><Insets top="30" right="50" bottom="30" left="50"/></padding>
                 <Label text="Ana Menü" styleClass="card-title"/>
                 <Button text="Bilet Ekle" onAction="#goEkle" maxWidth="Infinity"/>
-                <Button text="Biletleri Listele / Sil / Güncelle" onAction="#goListe" maxWidth="Infinity"/>
-                <Button text="Biletleri Sırala" onAction="#goSirala" maxWidth="Infinity"/>
+                <Button text="Biletleri Listele / Sil / Güncelle / Sırala" onAction="#goListe" maxWidth="Infinity"/>
                 <Button text="Bilet Sorgula" onAction="#goSorgula" maxWidth="Infinity"/>
                 <Button text="İşlem Geçmişi" onAction="#goGecmis" maxWidth="Infinity"/>
             </VBox>
 
-            <!-- BİLET EKLE EKRANI -->
-            <VBox fx:id="eklePane" visible="false" managed="false"
-                  spacing="10" styleClass="card">
-                <padding>
-                    <Insets top="20" right="20" bottom="20" left="20"/>
-                </padding>
-                <Label text="Bilet Ekle" styleClass="card-title"/>
-
+            <!-- BİLET EKLE -->
+            <VBox fx:id="eklePane" visible="false" managed="false" spacing="10" styleClass="card">
+                <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+                <Label text="Bilet Ekle / Güncelle" styleClass="card-title"/>
                 <GridPane hgap="10" vgap="10">
                     <columnConstraints>
                         <ColumnConstraints percentWidth="30"/>
@@ -66,85 +55,46 @@
                     </columnConstraints>
 
                     <Label text="Ad:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-                    <TextField fx:id="txtAdEkle" promptText="Yolcu adı" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
-
+                    <TextField fx:id="txtAdEkle" promptText="Yolcu Adı" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
                     <Label text="Soyad:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-                    <TextField fx:id="txtSoyadEkle" promptText="Yolcu soyadı" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
-
+                    <TextField fx:id="txtSoyadEkle" promptText="Yolcu Soyadı" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
                     <Label text="TC No:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-                    <TextField fx:id="txtTcEkle" promptText="11 haneli TC" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
-
+                    <TextField fx:id="txtTcEkle" promptText="TC Kimlik Numarası" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
                     <Label text="Uçuş No:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
-                    <TextField fx:id="txtUcusNoEkle" promptText="Sadece rakam" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
-
+                    <TextField fx:id="txtUcusNoEkle" promptText="Uçuş Numarası" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
                     <Label text="Koltuk No:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
-                    <TextField fx:id="txtKoltukEkle" promptText="Örn: 12A" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
-
+                    <TextField fx:id="txtKoltukEkle" promptText="Örn: 1A" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
                     <Label text="Tarih:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
                     <TextField fx:id="txtTarihEkle" promptText="dd.MM.yyyy" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
-
                     <Label text="Saat:" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
                     <TextField fx:id="txtSaatEkle" promptText="HH.mm" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
-
                     <Label text="Fiyat:" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
-                    <TextField fx:id="txtFiyatEkle" promptText="Örn: 1500" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+                    <TextField fx:id="txtFiyatEkle" promptText="Örn: 3000" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
                 </GridPane>
 
-                <!-- Mesaj Kutusu -->
                 <Label fx:id="lblMesaj" text="" styleClass="message-text" wrapText="true"/>
-
                 <HBox spacing="10">
-                    <Button text="Ekle" onAction="#handleBiletEkle" styleClass="primary-btn"/>
+                    <Button text="Kaydet" onAction="#handleBiletEkle" styleClass="primary-btn"/>
                     <Pane HBox.hgrow="ALWAYS"/>
                     <Button text="Ana Menü" onAction="#goMenu" styleClass="primary-btn"/>
                 </HBox>
             </VBox>
 
-
-        <!-- SIRALAMA EKRANI -->
-            <VBox fx:id="siralaPane" visible="false" managed="false"
-                  spacing="15" styleClass="card">
-                <padding>
-                    <Insets top="20" right="20" bottom="20" left="20"/>
-                </padding>
-                <Label text="Biletleri Sırala" styleClass="card-title"/>
-                <Label text="Kriter seçin:"/>
-                <ChoiceBox fx:id="cbSiralaKriter"/>
-                <HBox spacing="10">
-                    <Button text="Sırala" onAction="#handleSirala" styleClass="primary-btn"/>
-                    <Pane HBox.hgrow="ALWAYS"/>
-                    <Button text="Ana Menü" onAction="#goMenu" styleClass="primary-btn"/>
-                </HBox>
-            </VBox>
-
-            <!-- SORGULAMA EKRANI -->
-            <VBox fx:id="sorgulaPane" visible="false" managed="false"
-                  spacing="10" styleClass="card">
-                <padding>
-                    <Insets top="20" right="20" bottom="20" left="20"/>
-                </padding>
-                <Label text="Bilet Sorgula" styleClass="card-title"/>
-                <HBox spacing="10">
-                    <RadioButton fx:id="rbSorguTc" text="TC ile" toggleGroup="$sorguGrup" selected="true"/>
-                    <RadioButton fx:id="rbSorguUcusNo" text="Uçuş No ile" toggleGroup="$sorguGrup"/>
-                </HBox>
-                <TextField fx:id="txtSorguDeger" promptText="Aranacak değeri girin"/>
-                <Button text="Sorgula" onAction="#handleSorgula" styleClass="primary-btn" maxWidth="Infinity"/>
-                <Label text="Sonuç:"/>
-                <TextArea fx:id="taSorguSonuc" editable="false" prefRowCount="6"/>
-                <HBox spacing="10">
-                    <Pane HBox.hgrow="ALWAYS"/>
-                    <Button text="Ana Menü" onAction="#goMenu" styleClass="primary-btn"/>
-                </HBox>
-            </VBox>
-
-            <!-- LİSTELE / SİL / GÜNCELLE EKRANI -->
-            <VBox fx:id="listePane" visible="false" managed="false"
-                  spacing="10" styleClass="card">
+            <!-- LİSTELE / SİL / GÜNCELLE / SIRALA EKRANI -->
+            <VBox fx:id="listePane" visible="false" managed="false" spacing="10" styleClass="card">
                 <padding>
                     <Insets top="10" right="10" bottom="10" left="10"/>
                 </padding>
                 <Label text="Bilet Listesi" styleClass="card-title"/>
+
+                <!-- Sıralama Kriteri -->
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="Sıralama Kriteri:"/>
+                    <ChoiceBox fx:id="cbSiralaKriter" prefWidth="150"/>
+                    <Button text="Sırala" onAction="#handleSirala" styleClass="primary-btn"/>
+                </HBox>
+
+                <!-- Tablo -->
                 <TableView fx:id="tblBiletler" prefHeight="400">
                     <columns>
                         <TableColumn fx:id="colAd" text="Ad" prefWidth="100"/>
@@ -157,20 +107,47 @@
                         <TableColumn fx:id="colFiyat" text="Fiyat" prefWidth="80"/>
                     </columns>
                 </TableView>
+
                 <HBox spacing="10">
                     <Button text="Seçili Bileti Sil" onAction="#handleListeSil"/>
-                    <Button text="Seçili Bileti Güncelle (Ekle ekranına yükle)" onAction="#handleListeGuncelle"/>
+                    <Button text="Seçili Bileti Güncelle" onAction="#handleListeGuncelle"/>
                     <Pane HBox.hgrow="ALWAYS"/>
                     <Button text="Ana Menü" onAction="#goMenu" styleClass="primary-btn"/>
                 </HBox>
             </VBox>
 
-            <!-- İŞLEM GEÇMİŞİ EKRANI -->
-            <VBox fx:id="gecmisPane" visible="false" managed="false"
-                  spacing="10" styleClass="card">
+            <!-- SORGULAMA EKRANI -->
+            <VBox fx:id="sorgulaPane" visible="false" managed="false" spacing="10" styleClass="card">
                 <padding>
                     <Insets top="20" right="20" bottom="20" left="20"/>
                 </padding>
+                <Label text="Bilet Sorgula" styleClass="card-title"/>
+
+                <!-- Radyo butonları -->
+                <fx:define>
+                    <ToggleGroup fx:id="sorguGrup"/>
+                </fx:define>
+
+                <HBox spacing="10">
+                    <RadioButton fx:id="rbSorguTc" text="TC ile" toggleGroup="$sorguGrup" selected="true"/>
+                    <RadioButton fx:id="rbSorguUcusNo" text="Uçuş No ile" toggleGroup="$sorguGrup"/>
+                </HBox>
+
+                <TextField fx:id="txtSorguDeger" promptText="Aranacak değeri girin"/>
+                <Button text="Sorgula" onAction="#handleSorgula" styleClass="primary-btn" maxWidth="Infinity"/>
+
+                <Label text="Sonuç:"/>
+                <TextArea fx:id="taSorguSonuc" editable="false" prefRowCount="6"/>
+
+                <HBox spacing="10">
+                    <Pane HBox.hgrow="ALWAYS"/>
+                    <Button text="Ana Menü" onAction="#goMenu" styleClass="primary-btn"/>
+                </HBox>
+            </VBox>
+
+            <!-- İŞLEM GEÇMİŞİ -->
+            <VBox fx:id="gecmisPane" visible="false" managed="false" spacing="10" styleClass="card">
+                <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
                 <Label text="İşlem Geçmişi" styleClass="card-title"/>
                 <TextArea fx:id="taGecmis" editable="false" prefRowCount="12"/>
                 <HBox spacing="10">
