@@ -1,73 +1,269 @@
+
 .root {
-    -fx-font-family: "Segoe UI", "Arial";
-    -fx-background-color: linear-gradient(to bottom right, #f0f4ff, #ffffff);
+    -fx-font-family: "Roboto Thin";
+    -fx-background-image: url('file:///Users/hayrunnisabusraerdem/IdeaProjects/final_veriyapilari/ucak.jpg');
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+    -fx-background-repeat: no-repeat;
+}
+/* Sayfa 1 */
+.root-page1 {
+    -fx-background-image: url('file:///Users/hayrunnisabusraerdem/IdeaProjects/final_veriyapilari/ucak.jpg');
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+    -fx-background-repeat: no-repeat;
 }
 
-/* Üst bar */
+/* Sayfa 2 */
+.root-page2 {
+    -fx-background-image: url('file:///Users/hayrunnisabusraerdem/IdeaProjects/final_veriyapilari/sky.jpg');
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+    -fx-background-repeat: no-repeat;
+}
+
+/* ÜST BAR */
 .top-bar {
-    -fx-background-color: #1e3a8a;
+    -fx-background-color: transparent;
     -fx-alignment: CENTER_LEFT;
+    -fx-effect: none;
+    -fx-border-width: 0;
 }
 .app-title {
+    -fx-font-family: "Roboto Thin";
     -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 2, 0.0, 0, 1);
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-padding: 0;
+}
+
+/* BAŞLIK */
+.title-style {
     -fx-font-size: 20px;
-    -fx-font-weight: bold;
+    -fx-font-weight: 700;
+    -fx-text-fill: #000000;
+    -fx-padding: 0 0 10 0;
 }
 
-/* Kartlar */
-.card {
+/* INPUT  */
+.default-input {
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: #e6e6e6;
+    -fx-padding: 10;
+    -fx-background-color: #fafafa;
+}
+.default-input:focused {
+    -fx-border-color: #3498db;
     -fx-background-color: white;
-    -fx-background-radius: 12;
-    -fx-effect: dropshadow(gaussian, rgba(15,23,42,0.18), 15, 0.2, 0, 4);
-}
-.card-title {
-    -fx-font-size: 18px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #111827;
+    -fx-effect: dropshadow(gaussian, rgba(52,152,219,0.3), 8, 0.2, 0, 0);
 }
 
-/* Butonlar */
+
+
+/* Genel Kart (Ekle/Liste/Sorgula/Geçmiş ) */
+.card {
+    -fx-background-color: rgba(255, 255, 255, 0.9);
+    -fx-background-radius: 16;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 30, 0.2, 0, 8);
+    -fx-padding: 25;
+}
+
+/* Giriş (Login) */
+.login-container, .menu-container, .liste-container, .sorgula-container, .gecmis-container {
+
+    -fx-background-color: rgba(255, 255, 255, 0.9);
+    -fx-background-radius: 16;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 30, 0.2, 0, 8);
+    -fx-padding: 25;
+}
+.ekle-container{
+
+    -fx-background-color: rgba(255, 255, 255, 0.9);
+    -fx-background-radius: 16;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 30, 0.2, 0, 8);
+    -fx-padding: 25;
+}
+/* Login ve Menu içerik kutuları için şeffaflık */
+.login-content-box {
+    -fx-background-color: transparent;
+    -fx-effect: none;
+}
+.menu-content-box {
+    -fx-background-image: url('sky.jpg');
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+    -fx-background-color: transparent;
+}
+
+.login-title, .menu-title, .ekle-title, .liste-title, .sorgula-title, .gecmis-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #000000;
+    -fx-padding: 0 0 10 0;
+}
+
+
+.ekle-content-box {
+
+    -fx-background-color: transparent;
+    -fxborder-radius: 0;
+    -fx-background-radius: 0;
+    -fx-effect: none;
+
+}
+
+.login-input, .ekle-input, .sorgula-input {
+
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: #e6e6e6;
+    -fx-padding: 10;
+    -fx-background-color: #fafafa;
+}
+.login-input:focused, .ekle-input:focused, .sorgula-input:focused {
+    -fx-border-color: #3498db;
+    -fx-background-color: white;
+    -fx-effect: dropshadow(gaussian, rgba(52,152,219,0.3), 8, 0.2, 0, 0);
+}
+
+
+
 .button {
-    -fx-background-radius: 8;
-    -fx-padding: 8 16 8 16;
+    -fx-background-radius: 10;
+    -fx-padding: 10 20 10 20;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
 }
-.primary-btn {
-    -fx-background-color: #2563eb;
+
+/* ÇIKIŞ BUTONU  */
+.btn-cikis {
+    -fx-background-color: white;
+    -fx-text-fill: #1a237e;
+    -fx-font-weight: 600;
+    -fx-background-radius: 20;
+    -fx-padding: 8 20 8 20;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0.2, 0, 2);
+}
+.btn-cikis:hover {
+    -fx-background-color: #f0f0f0;
+}
+
+/* GİRİŞ BUTONU */
+.btn-login {
+    -fx-background-color: #3498db;
     -fx-text-fill: white;
+    -fx-font-weight: 600;
+    -fx-effect: dropshadow(gaussian, rgba(52,152,219,0.4), 10, 0.2, 0, 2);
+}
+.btn-login:hover {
+    -fx-background-color: #2980b9;
+    -fx-effect: dropshadow(gaussian, rgba(41,128,185,0.6), 15, 0.2, 0, 4);
+}
+
+/* MENÜ BUTONLARI*/
+.btn-menu {
+    -fx-background-color: #f0f0f0;
+    -fx-text-fill: #2c3e50;
+    -fx-font-weight: 600;
+}
+.btn-menu:hover {
+    -fx-background-color: #bdc3c7;
+}
+
+/* EKLE BUTONLARI */
+.btn-ekle-kaydet {
+
+    -fx-background-color: #2ecc71;
+    -fx-text-fill: white;
+    -fx-font-weight: 600;
+}
+.btn-ekle-kaydet:hover {
+    -fx-background-color: #27ae60;
+}
+
+.btn-ekle-menu {
+    -fx-background-color: #fac106;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: 600;
+}
+.btn-ekle-menu:hover {
+    -fx-background-color: #e6b616;
+}
+
+/* LİSTE BUTONLARI */
+.btn-liste-sil, .btn-liste-guncelle {
+    -fx-background-color: #e74c3c;
+    -fx-text-fill: white;
+    -fx-font-weight: 600;
+}
+.btn-liste-guncelle {
+    -fx-background-color: #f39c12;
+}
+.btn-liste-sirala, .btn-liste-menu {
+    -fx-background-color: #fac106;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: 600;
+}
+
+/* SORGULA BUTONLARI */
+.btn-sorgula {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-font-weight: 600;
+}
+.btn-sorgula-menu {
+    -fx-background-color: #fac106;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: 600;
+}
+
+/* GEÇMİŞ BUTONLARI */
+.btn-gecmis-menu {
+    -fx-background-color: #fac106;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: 600;
+}
+
+
+.ekle-label, .liste-label, .sorgula-label {
+
     -fx-font-weight: bold;
 }
-.primary-btn:hover {
-    -fx-background-color: #1d4ed8;
-}
-.secondary-btn {
-    -fx-background-color: #e5e7eb;
-    -fx-text-fill: #111827;
-}
-.secondary-btn:hover {
-    -fx-background-color: #d1d5db;
+
+.liste-tablo {
+
+    -fx-border-color: #e6e6e6;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
 }
 
-/* Mesaj kutusu */
-.message-text { -fx-font-size: 13px; -fx-text-fill: #374151; }
-.error-message { -fx-text-fill: #b91c1c; }
-.info-message { -fx-text-fill: #065f46; }
-.error-text { -fx-text-fill: #b91c1c; -fx-font-size: 12px; }
+.sorgula-radio {
 
-/* TextField ve TextArea */
-.text-field, .password-field, .text-area {
-    -fx-background-radius: 8;
-    -fx-border-radius: 8;
-    -fx-border-color: #e5e7eb;
-}
-.text-field:focused, .password-field:focused, .text-area:focused {
-    -fx-border-color: #2563eb;
-    -fx-effect: dropshadow(gaussian, rgba(37,99,235,0.3), 8, 0.2, 0, 0);
 }
 
-/* Tablo */
-.table-view {
-    -fx-border-color: #e5e7eb;
-    -fx-border-radius: 8;
-    -fx-background-radius: 8;
+.sorgula-output, .gecmis-output {
+    -fx-border-color: #e6e6e6;
+    -fx-background-color: #fafafa;
 }
-.table-view .column-header-background { -fx-background-color: #e5e7eb; }
+
+.error-text { -fx-text-fill: #ff0000; -fx-font-size: 13px; }
+
+.message-text {
+    -fx-font-size: 13px;
+    -fx-font-weight: 500;
+    -fx-padding: 5 0 0 0;
+}
+
+
+.error-message {
+    -fx-text-fill: #ff0000;
+
+}
+
+
+.info-message {
+    -fx-text-fill: #2ECC71;
+}

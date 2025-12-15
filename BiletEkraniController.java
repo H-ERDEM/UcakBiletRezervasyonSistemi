@@ -91,6 +91,17 @@ public class BiletEkraniController {
         }
         pane.setVisible(true);
         pane.setManaged(true);
+        // Arka plan değişimi
+        if (pane == loginPane) {
+            // Giriş ekranı -> uçak
+            rootStack.getStyleClass().removeAll("root-page1", "root-page2");
+            rootStack.getStyleClass().add("root-page1");
+        } else {
+            // Diğer tüm ekranlar -> sky
+            rootStack.getStyleClass().removeAll("root-page1", "root-page2");
+            rootStack.getStyleClass().add("root-page2");
+        }
+
         clearMessage();
     }
 
@@ -197,6 +208,14 @@ public class BiletEkraniController {
                     showError("Tarih bugünden önce olamaz!");
                     return;
                 }
+
+                // 2. Kural: Tarih, bugünden bir yıl sonrasından daha ileri olamaz.
+                LocalDate birYilSonra = LocalDate.now().plusYears(1);
+                if (biletTarihi.isAfter(birYilSonra)) {
+                    showError("Bilet tarihi, bugünden itibaren en fazla 1 yıl ileri olabilir!");
+                    return;
+                }
+
             } catch (Exception e) {
                 showError("Tarih dd.MM.yyyy formatında olmalıdır!");
                 return;
@@ -212,7 +231,7 @@ public class BiletEkraniController {
             double fiyat;
             try {
                 fiyat = Double.parseDouble(fiyatStr);
-                if (fiyat < 0) { showError("Fiyat negatif olamaz!"); return; }
+                if (fiyat < 0 || fiyat >= 500000) { showError("Geçerli fiyat değeri giriniz !"); return; }
             } catch (NumberFormatException e) {
                 showError("Fiyat sayısal olmalıdır!");
                 return;
@@ -231,7 +250,7 @@ public class BiletEkraniController {
                 }
             }
 
-            // -------------------- EKLE / GÜNCELLE --------------------
+            // EKLE / GÜNCELLE
             if (guncellenenBilet == null) {
                 Yolcu y = new Yolcu(ad, soyad, tc, koltuk);
                 Bilet b = new Bilet(ucusNo, tarih, saat, fiyat, y);
@@ -296,7 +315,7 @@ public class BiletEkraniController {
         showInfo("Seçili bilet düzenleme için yüklendi.");
     }
 
-    // -------------------- SIRALAMA --------------------
+    //SIRALAMA
     @FXML private void handleSirala() {
         String kriter = cbSiralaKriter.getValue();
         if (kriter == null) { showError("Lütfen kriter seçin!"); return; }
@@ -315,7 +334,7 @@ public class BiletEkraniController {
         islemGecmisi.add("Biletler \"" + kriter + "\" sırasına göre sıralandı.");
     }
 
-    // -------------------- SORGULAMA --------------------
+    // SORGULAMA
     @FXML private void handleSorgula() {
         String deger = txtSorguDeger.getText().trim();
         if (deger.isEmpty()) { showError("Arama değeri boş olamaz."); return; }
@@ -343,7 +362,7 @@ public class BiletEkraniController {
         showInfo("Sorgulama tamamlandı.");
     }
 
-    // -------------------- DOSYA İŞLEMLERİ --------------------
+    //DOSYA İŞLEMLERİ
     private void kaydetBiletler() {
         try (PrintWriter pw = new PrintWriter(DOSYA_ADI)) {
             for (Bilet b : biletListesi) {
@@ -367,3 +386,4 @@ public class BiletEkraniController {
         } catch (Exception e) { showError("Bilet yükleme hatası: " + e.getMessage()); }
     }
 }
+

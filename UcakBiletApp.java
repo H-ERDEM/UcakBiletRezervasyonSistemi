@@ -16,7 +16,7 @@ public class UcakBiletApp extends Application {
 
         stage.setTitle("Uçak Bilet Rezervasyon Sistemi");
         stage.setScene(scene);
-        stage.setResizable(false);
+        stage.setResizable(true);
         stage.show();
     }
 
