@@ -1,4 +1,4 @@
-[ucak_bilet_rezervasyon_sistemi_readme.md](https://github.com/user-attachments/files/24368254/ucak_bilet_rezervasyon_sistemi_readme.md)
+
 # ✈️ Uçak Bilet Rezervasyon Sistemi
 
 Bu proje, bir havayolu şirketi için **bilet yönetimi süreçlerini dijitalleştirmek** amacıyla geliştirilmiş, **JavaFX tabanlı bir masaüstü uygulamasıdır**. Kullanıcı dostu arayüzü sayesinde **bilet ekleme, listeleme, güncelleme ve silme (CRUD)** işlemleri kolaylıkla gerçekleştirilebilir.
@@ -7,7 +7,7 @@ Bu proje, bir havayolu şirketi için **bilet yönetimi süreçlerini dijitalle�
 
 ## 🖼️ Uygulama Ekran Görüntüleri
 
-Aşağıda projeye ait örnek ekran görüntülerini ekleyebilirsiniz. Görselleri `screenshots/` klasörü altına koymanız önerilir.
+
 
 ```
 📁 screenshots/
