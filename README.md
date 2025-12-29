@@ -129,7 +129,7 @@ git clone https://github.com/H-ERDEM/UcakBiletRezervasyonSistemi.git
 
 ---
 
-## 👤 Geliştiriciler
+## 👩🏼 Geliştiriciler
 
 **Hayrunnisa Büşra Erdem**  
 **Ayşe Yağmur Süzgün**
