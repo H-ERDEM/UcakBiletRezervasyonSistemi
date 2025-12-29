@@ -10,25 +10,30 @@ Bu proje, bir havayolu şirketi için **bilet yönetimi süreçlerini dijitalle�
 ### 🔐 Giriş & Ana Ekranlar
 <p align="center">
    <img src="https://github.com/user-attachments/assets/df8a50a3-bc43-4207-a725-9b279ae8ba86" width="45%" />
-   <img src="https://github.com/user-attachments/assets/ad4b9091-5ac8-4428-a59a-9a209e509b85" width="45%" />
+    <img src="https://github.com/user-attachments/assets/f2b5c006-0d8a-47ab-92c7-eda91ddcd22f" width="45%" />
+   
 
 </p>
 
 ### 🎫 Bilet İşlemleri
 <p align="center">
   <img src="https://github.com/user-attachments/assets/81f3eda0-c1f7-4cf5-8a29-c62d45f451e0" width="45%" />
-  <img src="https://github.com/user-attachments/assets/7d73a366-285b-407f-970f-58c8b4b14bb2" width="45%" />
+  <img src="https://github.com/user-attachments/assets/84ddfcfe-9027-4c5f-a1cf-2a62d0d52a02" width="45%" />
+  <img src="https://github.com/user-attachments/assets/5ff9816a-bca0-4a8e-a115-9670d4e90724" width="45%" />
+ 
+  
 </p>
 
 ### 🔎 Arama & Sıralama
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/84ddfcfe-9027-4c5f-a1cf-2a62d0d52a02" width="45%" />
-  <img src="https://github.com/user-attachments/assets/f2b5c006-0d8a-47ab-92c7-eda91ddcd22f" width="45%" />
+   <img src="https://github.com/user-attachments/assets/ad4b9091-5ac8-4428-a59a-9a209e509b85" width="45%" />
+   <img src="https://github.com/user-attachments/assets/7d73a366-285b-407f-970f-58c8b4b14bb2" width="45%" />
+  
 </p>
 
 ### 📝 Log & Takip Paneli
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/5ff9816a-bca0-4a8e-a115-9670d4e90724" width="45%" />
+  
   <img src="https://github.com/user-attachments/assets/42be0791-3555-41cb-9a5e-2e796f3b4c59" width="45%" />
 </p>
 ```
