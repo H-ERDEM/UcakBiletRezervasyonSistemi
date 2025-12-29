@@ -16,7 +16,7 @@ Bu proje, bir havayolu şirketi için **bilet yönetimi süreçlerini dijitalle�
 
 </p>
 
-### 🎫 Bilet İşlemleri
+### 🎫 Bilet İşlemleri (Ekleme & Güncelleme)
 <p align="center">
   <img src="https://github.com/user-attachments/assets/84ddfcfe-9027-4c5f-a1cf-2a62d0d52a02" width="45%" />
   <img src="https://github.com/user-attachments/assets/5ff9816a-bca0-4a8e-a115-9670d4e90724" width="45%" />
@@ -24,19 +24,17 @@ Bu proje, bir havayolu şirketi için **bilet yönetimi süreçlerini dijitalle�
   
 </p>
 
-### 🔎 Arama & Sıralama
+### 🔎 Arama & Sıralama Ekranları
 <p align="center">
    <img src="https://github.com/user-attachments/assets/ad4b9091-5ac8-4428-a59a-9a209e509b85" width="45%" />
    <img src="https://github.com/user-attachments/assets/7d73a366-285b-407f-970f-58c8b4b14bb2" width="45%" />
-  
 </p>
 
-### 📝 Log & Takip Paneli
+### 📝 İşlem Geçmişi Ekranı
 <p align="center">
   
   <img src="https://github.com/user-attachments/assets/42be0791-3555-41cb-9a5e-2e796f3b4c59" width="45%" />
 </p>
-```
 ---
 
 ## 🚀 Özellikler
