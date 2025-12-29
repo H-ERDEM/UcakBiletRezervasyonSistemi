@@ -35,6 +35,7 @@ Bu proje, bir havayolu şirketi için **bilet yönetimi süreçlerini dijitalle�
   
   <img src="https://github.com/user-attachments/assets/42be0791-3555-41cb-9a5e-2e796f3b4c59" width="45%" />
 </p>
+
 ---
 
 ## 🚀 Özellikler
