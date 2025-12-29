@@ -16,33 +16,6 @@ Bu proje, bir havayolu şirketi için **bilet yönetimi süreçlerini dijitalle�
 ![WhatsApp Image 2025-12-29 at 15 36 02](https://github.com/user-attachments/assets/5ff9816a-bca0-4a8e-a115-9670d4e90724)
 ![WhatsApp Image 2025-12-29 at 15 36 02 (6)](https://github.com/user-attachments/assets/42be0791-3555-41cb-9a5e-2e796f3b4c59)
 
-
-```
-
-📁 screenshots/
-├── login.png
-├── dashboard.png
-├── ticket_add.png
-├── ticket_list.png
-├── ticket_update.png
-├── search.png
-├── sorting.png
-└── logs.png
-```
-
-Markdown kullanım örneği:
-
-```md
-![Login Screen](![WhatsApp Image 2025-12-29 at 15 36 02 (5)](https://github.com/user-attachments/assets/84ddfcfe-9027-4c5f-a1cf-2a62d0d52a02))
-![Dashboard](screenshots/dashboard.png)
-![Ticket Add](screenshots/ticket_add.png)
-![Ticket List](screenshots/ticket_list.png)
-![Ticket Update](screenshots/ticket_update.png)
-![Search](screenshots/search.png)
-![Sorting](screenshots/sorting.png)
-![Logs](screenshots/logs.png)
-```
-
 ---
 
 ## 🚀 Özellikler
